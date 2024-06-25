@@ -142,7 +142,7 @@ class _RegisterState extends State<Register> {
                           padding: const EdgeInsets.all(18.0),
                           child: Container(
                             // margin: EdgeInsets.fromLTRB(200, 20, 50, 0),
-                            child: RaisedButton(
+                            child: ElevatedButton(
                               child: Text(
                                 'Register',
                                 style: TextStyle(color: Colors.white, fontSize: 22),
@@ -152,9 +152,6 @@ class _RegisterState extends State<Register> {
                                   print('form submiitted');
                                 }
                               },
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              color: Colors.blue,
                             ),
 
                             width: MediaQuery.of(context).size.width,

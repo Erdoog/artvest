@@ -45,15 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have been jamaled',
-              style: TextStyle(fontSize: 40),
-            ),
-          ],
-        ),
+        child: MyHomePage(title: 'ArtVest'),
       ),
     );
   }
