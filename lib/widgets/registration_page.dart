@@ -19,7 +19,7 @@ class _RegisterState extends State<Register> {
           title: Text('register'),
         ),
         body: SingleChildScrollView(
-          child: Padding(
+           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Form(
                 key: _formkey,
@@ -32,11 +32,15 @@ class _RegisterState extends State<Register> {
                         child: Container(
                           width: 200,
                           height: 150,
-                          //decoration: BoxDecoration(
-                          //borderRadius: BorderRadius.circular(40),
-                          //border: Border.all(color: Colors.blueGrey)),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(color: Colors.white, spreadRadius: 3),
+                            ],
+                          ),
                           child: Image.asset('assets/logo.png'),
-                        ),
+                       ),
                       ),
                     ),
                     Padding(
@@ -165,7 +169,7 @@ class _RegisterState extends State<Register> {
                         child: Center(
                           child: Text(
                             'Or Sign Up Using',
-                            style: TextStyle(fontSize: 18, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
                         ),
                       ),
@@ -182,22 +186,6 @@ class _RegisterState extends State<Register> {
                                   'assets/google.png',
                                   fit: BoxFit.cover,
                                 )),
-                            Container(
-                              height: 70,
-                              width: 70,
-                              child: Image.asset(
-                                'assets/vishal.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Container(
-                              height: 40,
-                              width: 40,
-                              child: Image.asset(
-                                'assets/google.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
                           ],
                         ),
                       ),

@@ -22,8 +22,9 @@ class ChatPage extends StatefulWidget {
 
 class ChatPageState extends State<ChatPage> {
   final List<types.Message> _messages = [];
-  final _user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
-  final openAI = OpenAI.instance.build(token: dotenv.env['TOKEN'],baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 5)),enableLog: true);
+  final _user = const types.User(id: '8359a903-ab0e-4335-ac81-05c8b058b61a');
+  final _responder = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
+  final openAI = OpenAI.instance.build(token: dotenv.env['TOKEN'],baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 30)),enableLog: true);
 
   @override
   Widget build(BuildContext context) {
@@ -60,11 +61,20 @@ class ChatPageState extends State<ChatPage> {
   void chatComplete(String queryMessage) async {
     final request = ChatCompleteText(messages: [
       Map.of({"role": "user", "content": queryMessage})
-    ], maxToken: 200, model: GptTurbo0301ChatModel());
+    ], maxToken: 200, model: Gpt4ChatModel());
 
     final response = await openAI.onChatCompletion(request: request);
     for (var element in response!.choices) {
       print("data -> ${element.message?.content}");
+      if (element.message == null)
+        continue;
+      final textMessage = types.TextMessage(
+        author: _responder,
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+        id: randomString(),
+        text: element.message!.content,
+      );
+      _addMessage(textMessage);
     }
   }
 }
