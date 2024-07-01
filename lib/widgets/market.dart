@@ -50,23 +50,23 @@ class _MarketPageState extends State<MarketPage> {
                 spots: spots
               )
             ],
-            // titlesData:
-            //   FlTitlesData(
-            //     show: true,
-            //     bottomTitles: AxisTitles(
-            //       sideTitles:
-            //         SideTitles(
-            //           showTitles: true,
-            //           getTitlesWidget: (value, titleMeta) {
-            //             final DateTime date =
-            //             DateTime.fromMillisecondsSinceEpoch(value.toInt());
-            //             final parts = date.toIso8601String().split("T");
-            //             return Text(parts.first);
-            //           },
-            //         ),
-            //     )
-            //
-            //   )
+            titlesData:
+              FlTitlesData(
+                show: true,
+                bottomTitles: AxisTitles(
+                  sideTitles:
+                    SideTitles(
+                      showTitles: true,
+                      getTitlesWidget: (value, titleMeta) {
+                        final DateTime date =
+                        DateTime.fromMillisecondsSinceEpoch(value.toInt());
+                        final parts = date.toIso8601String().split("T");
+                        return Text(parts.first);
+                      },
+                    ),
+                )
+
+              )
             )
           )
         ],

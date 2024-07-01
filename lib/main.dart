@@ -1,6 +1,7 @@
 import 'package:artvest/widgets/chat.dart';
 import 'package:artvest/widgets/market.dart';
 import 'package:artvest/widgets/registration_page.dart';
+import 'package:artvest/widgets/chart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       darkTheme: ThemeData.dark(),
-      home: ChatPage(),
+      home: ChartPage(),
     );
   }
 }
