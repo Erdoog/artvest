@@ -1,5 +1,6 @@
+import 'package:artvest/widgets/charity.dart';
 import 'package:artvest/widgets/chat.dart';
-import 'package:artvest/widgets/market.dart';
+import 'package:artvest/widgets/post_test.dart';
 import 'package:artvest/widgets/registration_page.dart';
 import 'package:artvest/widgets/chart_page.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       darkTheme: ThemeData.dark(),
-      home: ChartPage(),
+      // home: ChartPage(),
+      home: CharityListPage(),
     );
   }
 }
