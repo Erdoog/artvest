@@ -1,5 +1,6 @@
 import 'package:artvest/widgets/charity.dart';
 import 'package:artvest/widgets/chat.dart';
+import 'package:artvest/widgets/nodes-test.dart';
 import 'package:artvest/widgets/post_test.dart';
 import 'package:artvest/widgets/registration_page.dart';
 import 'package:artvest/widgets/chart_page.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData.dark(),
       // home: ChartPage(),
-      home: CharityListPage(),
+      home: NodeConnectionPage(),
     );
   }
 }
