@@ -54,11 +54,16 @@ class _VideoPageState extends State<VideoPage> {
             return Center(child: Text('No videos available'));
           } else {
             return ListView.builder(
-              scrollDirection: Axis.horizontal,
+              scrollDirection: Axis.vertical,
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final video = snapshot.data![index];
-                return VideoCard(video: video);
+                return Column(
+                    children: [
+                      VideoCard(video: video),
+                      SizedBox(height: 60,)
+                    ]
+                );
               },
             );
           }

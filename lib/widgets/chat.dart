@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -32,9 +33,9 @@ class ChatPageState extends State<ChatPage> {
       Scaffold(
       appBar: AppBar(
         title: const Text("Chat"),
-        backgroundColor: const Color(0xFF007AFF),
       ),
       body: Chat(
+        theme: const DarkChatTheme(),
         messages: _messages,
         onSendPressed: _handleSendPressed,
         user: _user
