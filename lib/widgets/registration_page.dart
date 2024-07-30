@@ -35,7 +35,7 @@ class _RegisterState extends State<Register> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(color: Colors.white, spreadRadius: 3),
                             ],
                           ),
@@ -59,14 +59,14 @@ class _RegisterState extends State<Register> {
                           RequiredValidator(errorText: 'Enter first named'),
                           MinLengthValidator(3,
                               errorText: 'Minimum 3 charecter filled name'),
-                        ]),
+                        ]).call,
 
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             hintText: 'Enter first Name',
                             labelText: 'First named',
                             prefixIcon: Icon(
                               Icons.person,
-                              color: Colors.green,
+                              color: Colors.white,
                             ),
                             errorStyle: TextStyle(fontSize: 18.0),
                             border: OutlineInputBorder(
@@ -83,13 +83,13 @@ class _RegisterState extends State<Register> {
                           MinLengthValidator(3,
                               errorText:
                               'Last name should be atleast 3 charater'),
-                        ]),
-                        decoration: InputDecoration(
+                        ]).call,
+                        decoration: const InputDecoration(
                             hintText: 'Enter last Name',
                             labelText: 'Last named',
                             prefixIcon: Icon(
                               Icons.person,
-                              color: Colors.grey,
+                              color: Colors.white,
                             ),
                             errorStyle: TextStyle(fontSize: 18.0),
                             border: OutlineInputBorder(
@@ -105,13 +105,13 @@ class _RegisterState extends State<Register> {
                           RequiredValidator(errorText: 'Enter email address'),
                           EmailValidator(
                               errorText: 'Please correct email filled'),
-                        ]),
-                        decoration: InputDecoration(
+                        ]).call,
+                        decoration: const InputDecoration(
                             hintText: 'Email',
                             labelText: 'Email',
                             prefixIcon: Icon(
                               Icons.email,
-                              color: Colors.lightBlue,
+                              color: Colors.white,
                             ),
                             errorStyle: TextStyle(fontSize: 18.0),
                             border: OutlineInputBorder(
@@ -127,13 +127,13 @@ class _RegisterState extends State<Register> {
                           RequiredValidator(errorText: 'Enter mobile number'),
                           PatternValidator(r'(^[0,9]{10}$)',
                               errorText: 'enter vaid mobile number'),
-                        ]),
-                        decoration: InputDecoration(
+                        ]).call,
+                        decoration: const InputDecoration(
                             hintText: 'Mobile',
                             labelText: 'Mobile',
                             prefixIcon: Icon(
                               Icons.phone,
-                              color: Colors.grey,
+                              color: Colors.white,
                             ),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.red),
@@ -146,8 +146,11 @@ class _RegisterState extends State<Register> {
                           padding: const EdgeInsets.all(18.0),
                           child: Container(
                             // margin: EdgeInsets.fromLTRB(200, 20, 50, 0),
+                            width: MediaQuery.of(context).size.width,
+                            height: 50,
+                            // margin: EdgeInsets.fromLTRB(200, 20, 50, 0),
                             child: ElevatedButton(
-                              child: Text(
+                              child: const Text(
                                 'Register',
                                 style: TextStyle(color: Colors.white, fontSize: 22),
                               ),
@@ -157,13 +160,9 @@ class _RegisterState extends State<Register> {
                                 }
                               },
                             ),
-
-                            width: MediaQuery.of(context).size.width,
-
-                            height: 50,
                           ),
                         )),
-                    Center(
+                    const Center(
                       child: Padding(
                         padding: EdgeInsets.only(top: 20),
                         child: Center(
@@ -176,7 +175,7 @@ class _RegisterState extends State<Register> {
                     ),
                     Center(
                       child: Padding(
-                        padding: EdgeInsets.only(top: 20, left: 90),
+                        padding: EdgeInsets.only(top: 20, left: 170),
                         child: Row(
                           children: [
                             Container(
@@ -193,7 +192,7 @@ class _RegisterState extends State<Register> {
                     Center(
                       child: Container(
                         padding: EdgeInsets.only(top: 60),
-                        child: Text(
+                        child: const Text(
                           'SIGN IN',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),

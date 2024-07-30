@@ -101,11 +101,11 @@ class _CharityPostState extends State<CharityPost> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.sizeOf(context).width;
+    final double screenHeight = MediaQuery.sizeOf(context).height;
 
     return SizedBox(
-      height: screenHeight,
+      height: screenHeight * 0.5,
       width: screenWidth,
       child: Center(
         child: Padding(
@@ -118,9 +118,10 @@ class _CharityPostState extends State<CharityPost> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     widget.charity.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: Colors.blue
                     ),
                   ),
                 ),
@@ -129,7 +130,7 @@ class _CharityPostState extends State<CharityPost> {
                   child: Text(
                     widget.charity.info,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                   ),
@@ -147,7 +148,7 @@ class _CharityPostState extends State<CharityPost> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       widget.charity.ID,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Colors.blueAccent,
                       ),

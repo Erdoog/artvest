@@ -35,7 +35,7 @@ class _SignInState extends State<SignIn> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(color: Colors.white, spreadRadius: 3),
                             ],
                           ),
@@ -50,13 +50,13 @@ class _SignInState extends State<SignIn> {
                           RequiredValidator(errorText: 'Enter email address'),
                           EmailValidator(
                               errorText: 'Please enter a valid email'),
-                        ]),
-                        decoration: InputDecoration(
+                        ]).call,
+                        decoration: const InputDecoration(
                             hintText: 'Email',
                             labelText: 'Email',
                             prefixIcon: Icon(
                               Icons.email,
-                              color: Colors.lightBlue,
+                              color: Colors.white,
                             ),
                             errorStyle: TextStyle(fontSize: 18.0),
                             border: OutlineInputBorder(
@@ -73,17 +73,17 @@ class _SignInState extends State<SignIn> {
                           RequiredValidator(errorText: 'Enter password'),
                           MinLengthValidator(6,
                               errorText: 'Password must be at least 6 characters long'),
-                        ]),
-                        decoration: InputDecoration(
+                        ]).call,
+                        decoration: const InputDecoration(
                             hintText: 'Password',
                             labelText: 'Password',
                             prefixIcon: Icon(
                               Icons.lock,
-                              color: Colors.grey,
+                              color: Colors.white,
                             ),
                             errorStyle: TextStyle(fontSize: 18.0),
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
+                                borderSide: BorderSide(color: Colors.white),
                                 borderRadius:
                                 BorderRadius.all(Radius.circular(9.0)))),
                       ),
@@ -92,8 +92,10 @@ class _SignInState extends State<SignIn> {
                         child: Padding(
                           padding: const EdgeInsets.all(18.0),
                           child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 50,
                             child: ElevatedButton(
-                              child: Text(
+                              child: const Text(
                                 'Sign In',
                                 style: TextStyle(color: Colors.white, fontSize: 22),
                               ),
@@ -103,11 +105,9 @@ class _SignInState extends State<SignIn> {
                                 }
                               },
                             ),
-                            width: MediaQuery.of(context).size.width,
-                            height: 50,
                           ),
                         )),
-                    Center(
+                    const Center(
                       child: Padding(
                         padding: EdgeInsets.only(top: 20),
                         child: Center(
@@ -120,7 +120,7 @@ class _SignInState extends State<SignIn> {
                     ),
                     Center(
                       child: Padding(
-                        padding: EdgeInsets.only(top: 20, left: 90),
+                        padding: EdgeInsets.only(top: 20, left: 170),
                         child: Row(
                           children: [
                             Container(
@@ -137,7 +137,7 @@ class _SignInState extends State<SignIn> {
                     Center(
                       child: Container(
                         padding: EdgeInsets.only(top: 60),
-                        child: Text(
+                        child: const Text(
                           'Register',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
