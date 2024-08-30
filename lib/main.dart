@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: ChartPage(),
-      home: PersonalAccountWidget(),
+      home: HomePage(),
     );
   }
 }

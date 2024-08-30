@@ -4,6 +4,7 @@ import 'package:artvest/widgets/chat.dart';
 import 'package:artvest/widgets/educational_page.dart';
 import 'package:artvest/widgets/chart_page.dart';
 import 'package:artvest/widgets/charity.dart';
+import 'package:artvest/widgets/account_page.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -172,10 +173,10 @@ class HomePage extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => ChartPage()),
+                                    MaterialPageRoute(builder: (context) => PersonalAccountWidget()),
                                   );
                                 },
-                                child: const Text('Simulation Of Investment Art'),
+                                child: const Text('My account'),
                               ),
                             ),
                           ]
