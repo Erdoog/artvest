@@ -118,7 +118,7 @@ class _VideoCardState extends State<VideoCard> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(widget.video.description),
+            child: Text(widget.video.description, style: TextStyle(color: Colors.white)),
           ),
         ],
       ),

@@ -48,6 +48,7 @@ class HomePage extends StatelessWidget {
                           const Text(
                             'Welcome to ArtVest',
                             style: TextStyle(
+                              color: Colors.white,
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
@@ -57,6 +58,7 @@ class HomePage extends StatelessWidget {
                             child: Text(
                               'Learn the art of investment with our community!',
                               style: TextStyle(
+                                color: Colors.white,
                                 fontSize: 18,
                               ),
                               textAlign: TextAlign.center,
@@ -188,7 +190,10 @@ class HomePage extends StatelessWidget {
                       const Text(
                         'Our team focuses on the education of Kazakhstani citizens in sphere of investments',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
                     ])
                   ),
