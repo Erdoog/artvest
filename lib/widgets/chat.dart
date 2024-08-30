@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:math';
 
@@ -25,23 +24,40 @@ class ChatPageState extends State<ChatPage> {
   final List<types.Message> _messages = [];
   final _user = const types.User(id: '8359a903-ab0e-4335-ac81-05c8b058b61a');
   final _responder = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
-  final openAI = OpenAI.instance.build(token: dotenv.env['TOKEN'],baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 30)),enableLog: true);
+  final openAI = OpenAI.instance.build(
+    token: dotenv.env['TOKEN'],
+    baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 30)),
+    enableLog: true,
+  );
 
   @override
   Widget build(BuildContext context) {
-    return
-      Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: const Text("Chat"),
+        title: const Padding(
+          padding: EdgeInsets.only(right: 4.0), // padding chtoby po centru bylo
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/ArtVestAI.jpeg'),
+                radius: 20.0,
+              ),
+              SizedBox(width: 10.0),
+              Text("ArtVest AI"),
+            ],
+          ),
+        ),
       ),
       body: Chat(
         theme: const DarkChatTheme(),
         messages: _messages,
         onSendPressed: _handleSendPressed,
-        user: _user
-      )
+        user: _user,
+      ),
     );
   }
+
   void _addMessage(types.Message message) {
     setState(() {
       _messages.insert(0, message);
@@ -59,16 +75,20 @@ class ChatPageState extends State<ChatPage> {
     chatComplete(message.text);
     _addMessage(textMessage);
   }
+
   void chatComplete(String queryMessage) async {
-    final request = ChatCompleteText(messages: [
-      Map.of({"role": "user", "content": queryMessage})
-    ], maxToken: 200, model: Gpt4ChatModel());
+    final request = ChatCompleteText(
+      messages: [
+        Map.of({"role": "user", "content": queryMessage})
+      ],
+      maxToken: 200,
+      model: Gpt4ChatModel(),
+    );
 
     final response = await openAI.onChatCompletion(request: request);
     for (var element in response!.choices) {
       print("data -> ${element.message?.content}");
-      if (element.message == null)
-        continue;
+      if (element.message == null) continue;
       final textMessage = types.TextMessage(
         author: _responder,
         createdAt: DateTime.now().millisecondsSinceEpoch,

@@ -176,7 +176,7 @@ class HomePage extends StatelessWidget {
                                     MaterialPageRoute(builder: (context) => PersonalAccountWidget()),
                                   );
                                 },
-                                child: const Text('My account'),
+                                child: const Text('My Account'),
                               ),
                             ),
                           ]
