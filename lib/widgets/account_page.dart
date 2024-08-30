@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class PersonalAccountWidget extends StatefulWidget {
   @override
@@ -10,11 +12,82 @@ class _PersonalAccountWidgetState extends State<PersonalAccountWidget> {
   String profilePictureUrl = "assets/default_pfp.jpg";
 
   void _changeUserName() {
-    // napishi logiku po smene mne len
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        TextEditingController _controller = TextEditingController();
+        return AlertDialog(
+          title: const Text("Change Username"),
+          content: TextField(
+            controller: _controller,
+            decoration: const InputDecoration(hintText: "Enter new username"),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  userName = _controller.text.isNotEmpty ? _controller.text : userName;
+                  print("new username: $userName"); // poka tak sam na server zakin'
+                });
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+
+          ],
+        );
+      },
+    );
   }
+
 
   void _changeProfilePicture() {
     // napishi logiku po smene ya hz kak
+  }
+
+  Future<List<String>> _loadAchievements() async {
+    String jsonString = await rootBundle.loadString('assets/achievements.json');
+    List<dynamic> jsonList = jsonDecode(jsonString);
+    return List<String>.from(jsonList);
+  }
+
+  void _showAchievements() async {
+    List<String> achievements = await _loadAchievements();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Achievements"),
+          content: SizedBox(
+            width: double.maxFinite,
+            height: 200, // visota dlya scrolla
+            child: ListView.builder(
+              itemCount: achievements.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(achievements[index]),
+                );
+              },
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("Close"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -34,8 +107,7 @@ class _PersonalAccountWidgetState extends State<PersonalAccountWidget> {
                     child: CircleAvatar(
                       radius: 30, // eto radius pfp-shki default = 40
                       backgroundImage: AssetImage(profilePictureUrl),
-                      onBackgroundImageError: (_, __) {
-                      },
+                      onBackgroundImageError: (_, __) {},
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -55,9 +127,7 @@ class _PersonalAccountWidgetState extends State<PersonalAccountWidget> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: TextButton(
-                  onPressed: () {
-                    // hren dlya achievements (nado logiku propisat')
-                  },
+                  onPressed: _showAchievements,
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,
                     textStyle: const TextStyle(
@@ -111,7 +181,7 @@ class _PersonalAccountWidgetState extends State<PersonalAccountWidget> {
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.white, // Sdelay text belim
+            color: Colors.white,
           ),
         ),
         const SizedBox(height: 8),
@@ -153,10 +223,10 @@ class _PersonalAccountWidgetState extends State<PersonalAccountWidget> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Data ${i + 1}.${index + 1}", // Sample data
+                        "Data ${i + 1}.${index + 1}",
                         style: const TextStyle(
                           fontSize: 12,
-                          color: Colors.white, // Grey text color
+                          color: Colors.white,
                         ),
                         textAlign: TextAlign.center,
                       ),
