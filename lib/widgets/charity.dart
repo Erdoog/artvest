@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 
 class Charity {
@@ -20,6 +19,8 @@ class Charity {
 }
 
 class CharityListPage extends StatefulWidget {
+  const CharityListPage({super.key});
+
   @override
   _CharityListPageState createState() => _CharityListPageState();
 }
@@ -60,17 +61,17 @@ class _CharityListPageState extends State<CharityListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Charities'),
+        title: const Text('Charities'),
       ),
       body: FutureBuilder<List<Charity>>(
         future: futureCharities,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No charities found'));
+            return const Center(child: Text('No charities found'));
           } else {
             final charities = snapshot.data!;
             return ListView.builder(
@@ -90,7 +91,7 @@ class _CharityListPageState extends State<CharityListPage> {
 class CharityPost extends StatefulWidget {
   final Charity charity;
 
-  CharityPost({required this.charity});
+  const CharityPost({super.key, required this.charity});
 
   @override
   _CharityPostState createState() => _CharityPostState();
@@ -102,10 +103,10 @@ class _CharityPostState extends State<CharityPost> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.sizeOf(context).width;
-    final double screenHeight = MediaQuery.sizeOf(context).height;
+    // final double screenHeight = MediaQuery.sizeOf(context).height;
 
     return SizedBox(
-      height: screenHeight * 0.5,
+      // height: screenHeight * 0.5,
       width: screenWidth,
       child: Center(
         child: Padding(

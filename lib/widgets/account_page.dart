@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class PersonalAccountWidget extends StatefulWidget {
+  const PersonalAccountWidget({super.key});
+
   @override
   _PersonalAccountWidgetState createState() => _PersonalAccountWidgetState();
 }
@@ -15,11 +17,11 @@ class _PersonalAccountWidgetState extends State<PersonalAccountWidget> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        TextEditingController _controller = TextEditingController();
+        TextEditingController controller = TextEditingController();
         return AlertDialog(
           title: const Text("Change Username"),
           content: TextField(
-            controller: _controller,
+            controller: controller,
             decoration: const InputDecoration(hintText: "Enter new username"),
           ),
           actions: [
@@ -32,7 +34,7 @@ class _PersonalAccountWidgetState extends State<PersonalAccountWidget> {
             TextButton(
               onPressed: () {
                 setState(() {
-                  userName = _controller.text.isNotEmpty ? _controller.text : userName;
+                  userName = controller.text.isNotEmpty ? controller.text : userName;
                   print("new username: $userName"); // poka tak sam na server zakin'
                 });
                 Navigator.of(context).pop();
@@ -187,13 +189,15 @@ class _PersonalAccountWidgetState extends State<PersonalAccountWidget> {
         const SizedBox(height: 8),
         Table(
           border: const TableBorder(
-            horizontalInside: BorderSide(color: Colors.white),
-            bottom: BorderSide(color: Colors.white),
+            horizontalInside: BorderSide(color: Colors.black),
+            bottom: BorderSide(color: Colors.black),
           ),
           columnWidths: {for (var i = 0; i < columnCount; i++) i: const FlexColumnWidth()},
           children: [
             TableRow(
-              decoration: const BoxDecoration(),
+              decoration: const BoxDecoration(
+                color: Color(0xFF002244)
+              ),
               children: columns.map((column) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -214,10 +218,11 @@ class _PersonalAccountWidgetState extends State<PersonalAccountWidget> {
                 children: List.generate(columnCount, (index) {
                   return Container(
                     decoration: const BoxDecoration(
+                      color: Colors.white10,
                       border: Border(
-                        left: BorderSide(color: Colors.white),
-                        right: BorderSide(color: Colors.white),
-                        bottom: BorderSide(color: Colors.white),
+                        left: BorderSide(color: Colors.transparent),
+                        right: BorderSide(color: Colors.transparent),
+                        bottom: BorderSide(color: Colors.transparent),
                       ),
                     ),
                     child: Padding(

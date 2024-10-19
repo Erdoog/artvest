@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:flutter/foundation.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+  const SignIn({super.key});
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -16,7 +15,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Sign In'),
+          title: const Text('Sign In'),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -91,7 +90,7 @@ class _SignInState extends State<SignIn> {
                     Center(
                         child: Padding(
                           padding: const EdgeInsets.all(18.0),
-                          child: Container(
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width,
                             height: 50,
                             child: ElevatedButton(
@@ -120,10 +119,10 @@ class _SignInState extends State<SignIn> {
                     ),
                     Center(
                       child: Padding(
-                        padding: EdgeInsets.only(top: 20, left: 170),
+                        padding: const EdgeInsets.only(top: 20, left: 170),
                         child: Row(
                           children: [
-                            Container(
+                            SizedBox(
                                 height: 40,
                                 width: 40,
                                 child: Image.asset(
@@ -136,7 +135,7 @@ class _SignInState extends State<SignIn> {
                     ),
                     Center(
                       child: Container(
-                        padding: EdgeInsets.only(top: 60),
+                        padding: const EdgeInsets.only(top: 60),
                         child: const Text(
                           'Register',
                           style: TextStyle(

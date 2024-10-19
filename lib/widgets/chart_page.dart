@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ChartPage extends StatefulWidget {
+  const ChartPage({super.key});
+
   @override
   _ChartPageState createState() => _ChartPageState();
 }
@@ -12,7 +14,7 @@ class ChartPage extends StatefulWidget {
 class _ChartPageState extends State<ChartPage> {
   List<FlSpot> spots = [];
   double lastPrice = 0.0;
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   bool isMaximized = true;
   bool isWidgetVisible = false;
   bool isButtonPressed = false;
@@ -86,7 +88,7 @@ class _ChartPageState extends State<ChartPage> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(
+          const Positioned(
             top: 46,
             right: 246,
             child: Row(
@@ -121,7 +123,7 @@ class _ChartPageState extends State<ChartPage> {
             top: -80,
             child: Center(
               child: AnimatedContainer(
-                duration: Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 300),
                 width: isMaximized
                     ? MediaQuery.of(context).size.width * 0.9
                     : 400,
@@ -129,7 +131,7 @@ class _ChartPageState extends State<ChartPage> {
                     ? MediaQuery.of(context).size.height * 0.7
                     : 300,
                 decoration: BoxDecoration(
-                  color: Color(0xff130e15),
+                  color: const Color(0xff130e15),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: spots.isEmpty
@@ -215,30 +217,30 @@ class _ChartPageState extends State<ChartPage> {
             right: 16,
             child: AnimatedOpacity(
               opacity: isWidgetVisible ? 1.0 : 0.0,
-              duration: Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 300),
               child: Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
                   color: Color(0xff1e1e1e),
                   borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text('Shares', style: TextStyle(color: Colors.white)),
+                    const Text('Shares', style: TextStyle(color: Colors.white)),
                     TextField(
                       controller: _sharesController,
                       keyboardType: TextInputType.number,
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         fillColor: Colors.grey[800],
                         filled: true,
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         hintText: 'Enter shares',
-                        hintStyle: TextStyle(color: Colors.white70),
+                        hintStyle: const TextStyle(color: Colors.white70),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -246,55 +248,55 @@ class _ChartPageState extends State<ChartPage> {
                           onPressed: () {
                             // edra make Buy action
                           },
-                          child: Text('Buy'),
+                          child: const Text('Buy'),
                         ),
                         ElevatedButton(
                           onPressed: () {
                             // edra make Sell action
                           },
-                          child: Text('Sell'),
+                          child: const Text('Sell'),
                         ),
                       ],
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Row(
                       children: [
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Limit', style: TextStyle(color: Colors.white)),
+                              const Text('Limit', style: TextStyle(color: Colors.white)),
                               TextField(
                                 controller: _buyLimitController,
                                 keyboardType: TextInputType.number,
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   fillColor: Colors.grey[800],
                                   filled: true,
-                                  border: OutlineInputBorder(),
+                                  border: const OutlineInputBorder(),
                                   hintText: 'Enter limit',
-                                  hintStyle: TextStyle(color: Colors.white70),
+                                  hintStyle: const TextStyle(color: Colors.white70),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Duration', style: TextStyle(color: Colors.white)),
+                              const Text('Duration', style: TextStyle(color: Colors.white)),
                               TextField(
                                 controller: _sellDurationController,
                                 keyboardType: TextInputType.number,
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   fillColor: Colors.grey[800],
                                   filled: true,
-                                  border: OutlineInputBorder(),
+                                  border: const OutlineInputBorder(),
                                   hintText: 'Enter duration',
-                                  hintStyle: TextStyle(color: Colors.white70),
+                                  hintStyle: const TextStyle(color: Colors.white70),
                                 ),
                               ),
                             ],
@@ -310,7 +312,7 @@ class _ChartPageState extends State<ChartPage> {
           AnimatedPositioned(
             bottom: isButtonPressed ? 280 : 80, // 1 - when pressed, 2 - when unpressed
             right: 16,
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             child: FloatingActionButton(
               onPressed: () {
                 setState(() {
@@ -318,11 +320,11 @@ class _ChartPageState extends State<ChartPage> {
                   isButtonPressed = !isButtonPressed;
                 });
               },
+              backgroundColor: Colors.blue,
               child: Icon(
                 isWidgetVisible ? Icons.close : Icons.add,
                 color: Colors.white,
               ),
-              backgroundColor: Colors.blue,
             ),
           ),
         ],

@@ -1,10 +1,11 @@
   import 'dart:convert';
 
-  import 'package:flutter/cupertino.dart';
   import 'package:flutter/material.dart';
   import 'package:http/http.dart' as http;
 
   class PostTestPage extends StatefulWidget {
+  const PostTestPage({super.key});
+
     @override
     State<PostTestPage> createState() => PostPageState();
   }
@@ -42,7 +43,7 @@
             body: Column(
               children: [
                 Text(resultText),
-                OutlinedButton(onPressed: postChange, child: Text("Send Post"))
+                OutlinedButton(onPressed: postChange, child: const Text("Send Post"))
               ]
             )
         );

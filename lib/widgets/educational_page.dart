@@ -18,6 +18,8 @@ class Video {
 }
 
 class VideoPage extends StatefulWidget {
+  const VideoPage({super.key});
+
   @override
   _VideoPageState createState() => _VideoPageState();
 }
@@ -41,17 +43,17 @@ class _VideoPageState extends State<VideoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Education'),
+        title: const Text('Education'),
       ),
       body: FutureBuilder<List<Video>>(
         future: futureVideos,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No videos available'));
+            return const Center(child: Text('No videos available'));
           } else {
             return ListView.builder(
               scrollDirection: Axis.vertical,
@@ -61,7 +63,7 @@ class _VideoPageState extends State<VideoPage> {
                 return Column(
                     children: [
                       VideoCard(video: video),
-                      SizedBox(height: 60,)
+                      const SizedBox(height: 60,)
                     ]
                 );
               },
@@ -76,7 +78,7 @@ class _VideoPageState extends State<VideoPage> {
 class VideoCard extends StatefulWidget {
   final Video video;
 
-  VideoCard({required this.video});
+  const VideoCard({super.key, required this.video});
 
   @override
   _VideoCardState createState() => _VideoCardState();
@@ -90,7 +92,7 @@ class _VideoCardState extends State<VideoCard> {
     super.initState();
     _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(widget.video.link)!,
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
       ),
@@ -105,11 +107,11 @@ class _VideoCardState extends State<VideoCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height / 2,
             child: YoutubePlayer(
               controller: _controller,
@@ -118,7 +120,7 @@ class _VideoCardState extends State<VideoCard> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(widget.video.description, style: TextStyle(color: Colors.white)),
+            child: Text(widget.video.description, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),

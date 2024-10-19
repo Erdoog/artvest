@@ -1,13 +1,4 @@
-import 'package:artvest/widgets/charity.dart';
-import 'package:artvest/widgets/chat.dart';
-import 'package:artvest/widgets/educational_page.dart';
 import 'package:artvest/widgets/home_page.dart';
-import 'package:artvest/widgets/nodes-test.dart';
-import 'package:artvest/widgets/post_test.dart';
-import 'package:artvest/widgets/registration_page.dart';
-import 'package:artvest/widgets/chart_page.dart';
-import 'package:artvest/widgets/sign-in_page.dart';
-import 'package:artvest/widgets/account_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -38,7 +29,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: ChartPage(),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

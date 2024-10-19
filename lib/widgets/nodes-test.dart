@@ -1,9 +1,8 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
 class NodeConnectionPage extends StatelessWidget {
-  const NodeConnectionPage({Key? key}) : super(key: key);
+  const NodeConnectionPage({super.key});
   static const nodePositions = [
     [.34, .07 + 0.2],
     [.63, .22 + 0.2],
@@ -16,7 +15,7 @@ class NodeConnectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Nodes')
+        title: const Text('Nodes')
       ),
       body: Center(
         child: SizedBox(
@@ -34,7 +33,7 @@ class NodeConnectionPage extends StatelessWidget {
                   top: node[1] * MediaQuery.sizeOf(context).width * 0.7 - 20,
                   child: ElevatedButton(
                       onPressed: () {
-                      }, child: Text('Button')
+                      }, child: const Text('Button')
                   )
                 );
               })
@@ -77,7 +76,7 @@ class NodePainter extends CustomPainter {
       canvas.drawLine(nodes[i], nodes[i + 1], linePaint);
     }
 
-    canvas.drawLine(Offset(0, 0), Offset(1, 0), Paint()..color = Colors.black);
+    canvas.drawLine(const Offset(0, 0), const Offset(1, 0), Paint()..color = Colors.black);
     
     // Draw the nodes
     for (Offset node in nodes) {

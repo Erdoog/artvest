@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:flutter/foundation.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+  const Register({super.key});
 
   @override
   State<Register> createState() => _RegisterState();
@@ -16,7 +15,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Register'),
+          title: const Text('Register'),
         ),
         body: SingleChildScrollView(
            child: Padding(
@@ -144,7 +143,7 @@ class _RegisterState extends State<Register> {
                     Center(
                         child: Padding(
                           padding: const EdgeInsets.all(18.0),
-                          child: Container(
+                          child: SizedBox(
                             // margin: EdgeInsets.fromLTRB(200, 20, 50, 0),
                             width: MediaQuery.of(context).size.width,
                             height: 50,
@@ -175,10 +174,10 @@ class _RegisterState extends State<Register> {
                     ),
                     Center(
                       child: Padding(
-                        padding: EdgeInsets.only(top: 20, left: 170),
+                        padding: const EdgeInsets.only(top: 20, left: 170),
                         child: Row(
                           children: [
-                            Container(
+                            SizedBox(
                                 height: 40,
                                 width: 40,
                                 child: Image.asset(
@@ -191,7 +190,7 @@ class _RegisterState extends State<Register> {
                     ),
                     Center(
                       child: Container(
-                        padding: EdgeInsets.only(top: 60),
+                        padding: const EdgeInsets.only(top: 60),
                         child: const Text(
                           'SIGN IN',
                           style: TextStyle(

@@ -1,4 +1,3 @@
-import 'package:artvest/widgets/nodes-test.dart';
 import 'package:flutter/material.dart';
 import 'package:artvest/widgets/chat.dart';
 import 'package:artvest/widgets/educational_page.dart';
@@ -7,6 +6,8 @@ import 'package:artvest/widgets/charity.dart';
 import 'package:artvest/widgets/account_page.dart';
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
@@ -27,6 +28,8 @@ class HomePage extends StatelessWidget {
     [.55 - 0.24, .69 + 0.2],
     [.38 - 0.24, .96 + 0.2]
   ];
+
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,7 @@ class HomePage extends StatelessWidget {
                     constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width * 0.8),
                     child: const Column(
                         children: [
-                          const Text(
+                          Text(
                             'Welcome to ArtVest',
                             style: TextStyle(
                               color: Colors.white,
@@ -54,8 +57,8 @@ class HomePage extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          const Center(
+                          SizedBox(height: 8),
+                          Center(
                             child: Text(
                               'Learn the art of investment with our community!',
                               style: TextStyle(
@@ -121,7 +124,7 @@ class HomePage extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => CharityListPage()),
+                                    MaterialPageRoute(builder: (context) => const CharityListPage()),
                                   );
                                 },
                                 child: const Text('Support Of Social Projects'),
@@ -134,7 +137,7 @@ class HomePage extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => ChartPage()),
+                                    MaterialPageRoute(builder: (context) => const ChartPage()),
                                   );
                                 },
                                 child: const Text('Simulation Of Investment Art'),
@@ -147,7 +150,7 @@ class HomePage extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => ChatPage()),
+                                    MaterialPageRoute(builder: (context) => const ChatPage()),
                                   );
                                 },
                                 child: const Text('AI Chat - Financial Consultant'),
@@ -160,7 +163,7 @@ class HomePage extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => VideoPage()),
+                                    MaterialPageRoute(builder: (context) => const VideoPage()),
                                   );
                                 },
                                 child: const Text('Basic Knowledge Of Finance'),
@@ -173,7 +176,7 @@ class HomePage extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => PersonalAccountWidget()),
+                                    MaterialPageRoute(builder: (context) => const PersonalAccountWidget()),
                                   );
                                 },
                                 child: const Text('My Account'),
@@ -188,7 +191,7 @@ class HomePage extends StatelessWidget {
                     constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width *  0.8),
                     child: const Column(
                     children: [
-                      const Text(
+                      Text(
                         'Our team focuses on the education of Kazakhstani citizens in sphere of investments',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -238,7 +241,7 @@ class NodePainter extends CustomPainter {
       canvas.drawLine(nodes[i], nodes[i + 1], linePaint);
     }
 
-    canvas.drawLine(Offset(0, 0), Offset(1, 0), Paint()..color = Colors.black);
+    canvas.drawLine(const Offset(0, 0), const Offset(1, 0), Paint()..color = Colors.black);
 
     // Draw the nodes
     for (Offset node in nodes) {
